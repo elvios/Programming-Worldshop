@@ -33,6 +33,7 @@ public class DkItuKf13GameWorld {
         for (int i = 0; i < 6; i++){
             System.out.println(b[i]);
         }
+        a.mapToMultiArray("Bane1.txt");
     }
 }
 
