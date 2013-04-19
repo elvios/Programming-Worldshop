@@ -1,0 +1,42 @@
+Course Log
+
+Team contract:
+We work on the project 2 hours Tuesday and all of Friday.
+We contact each other via text message and github.
+If we are behind we make up for lost time by meeting ekstra.
+
+March 8, 2013
+
+Today we will be trying to get a grip on the project start. Made 3 fun lands in netbeans.
+
+March 15, 2013
+
+Today we worked on paper. We did some awesome brainstorming where nothing was out of bounds. Came up with some crazy fun lands. Talked about the structure of the game. (multi dimensional arrays) Also the opject of the games in the different lands
+
+March 22, 2013
+
+Today we experimented with game elements layout. We made animals with ascii-art. We organized the levels of the games. We found out how to save and load from files.
+
+April 5, 2013
+
+Today we talked about weaving an knitting. Yarn quality and 3D printing were also important topics! :) That done we worked ekstra hard on printing our game maps from the text files using multi dimentional arrays. Unless otherwise stated we work equal time at the computer.
+
+April 12, 2013
+
+Today we worked on implementing movement, but it didn't really work. We made a tornado! We have made alot of logic functions in the map class.
+
+(===)
+(===)
+ (==)
+  (=)
+  () 
+()     
+-----
+
+April 19, 2012
+
+Today we received a wakeup call about not using evil wizards. This was usefull. We found out that we need to implement Jframe. For the last 3 weeks we have hoping we could avoid it. But we needed it for the keylistener. We have been working on MVC which we would like to have in our project. We have also worked on some player logic and got the player variables to change when we pressed the arrow keys.
+
+
+
+
