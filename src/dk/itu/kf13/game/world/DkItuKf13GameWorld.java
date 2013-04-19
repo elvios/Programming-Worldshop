@@ -19,21 +19,17 @@ public class DkItuKf13GameWorld {
      */
     public static void main(String[] args) throws IOException {
         EpicWorld theWorld = new EpicWorld();
-        List<Location> ourLocations = theWorld.getLocations();
         
-        for ( Location location : ourLocations) {
-            System.out.println(location.getName() + ": " + location.getDescription());
-        }
-        Felter a = new Felter();
-        String[] b = a.fileToArray("src\\dk\\itu\\kf13\\game\\world\\Maps\\Bane1.txt");
+        Map a = new Map();
+        String[][] smallMapArray = a.mapFileToSmallArray("Bane1.txt");
+        a.replaceLetterInMapArray(smallMapArray, "B", 7, 4);
+        String[][] largeMapArray = a.smallMapToLargeMap(smallMapArray);
         
-        int c = a.readLines("src\\dk\\itu\\kf13\\game\\world\\Blocks\\w.txt");
-        System.out.println(c);
+        a.printMultiArray(largeMapArray);
         
-        for (int i = 0; i < 6; i++){
-            System.out.println(b[i]);
-        }
-        a.mapToMultiArray("Bane1.txt");
+        Movement m = new Movement();
+        
+        
     }
 }
 

@@ -14,7 +14,7 @@ public class View {
     
     public void drawMap(String mapName) throws IOException{
         
-        Felter fe = new Felter();
+        Map fe = new Map();
         String[] mapArray = fe.fileToArray("src\\dk\\itu\\kf13\\game\\world\\Maps\\" + mapName);
         
     }
