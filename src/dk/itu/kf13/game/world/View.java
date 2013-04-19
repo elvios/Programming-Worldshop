@@ -4,7 +4,8 @@
  */
 package dk.itu.kf13.game.world;
 
-import java.io.IOException;
+import java.awt.Dimension;
+import javax.swing.JFrame;
 
 /**
  *
@@ -12,10 +13,27 @@ import java.io.IOException;
  */
 public class View {
     
-    public void drawMap(String mapName) throws IOException{
+    public int width = 300;
+    public int height = 300;
+    String title = "Game title";
+    
+    JFrame jframe;
+    
+    
+    public void createFrame() {
+        // Sets the size and title
+        jframe = new JFrame(title);
+        jframe.setPreferredSize(new Dimension(width,height));
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        Map fe = new Map();
-        String[] mapArray = fe.fileToArray("src\\dk\\itu\\kf13\\game\\world\\Maps\\" + mapName);
+        // Loads the JPanel
+        Panel panel = new Panel();
+        jframe.add(panel);
+        
+        // Draws the entire window
+        jframe.pack();
+        jframe.setVisible(true);
         
     }
+    
 }

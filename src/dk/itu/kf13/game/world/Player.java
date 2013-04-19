@@ -14,11 +14,21 @@ public class Player {
     private int y;
     private String appearance;
     
+    public Player(int start_x, int start_y, String start_appearance) {
+        x = start_x;
+        y = start_y;
+        appearance = start_appearance;
+    }
+    
     public int[] getLocation() {
         int[] array = null;
         array[0] = x;
         array[1] = y;
         return array;
+    }
+    
+    public void printLocation() {
+        System.out.println(x + "," + y);
     }
     
     public void move(int moveX, int moveY) {
@@ -29,4 +39,6 @@ public class Player {
     public String getAppearance() {
         return appearance;
     }
+    
+    
 }
