@@ -129,4 +129,14 @@ public class Map {
         mapArray[y][x] = replacement;
         return mapArray;
     }
+    
+    public String multiArrayToString(String[][] inputArray) {
+        String output = "";
+        for (int i = 0; i < inputArray.length; i++) {
+            for (int j = 0; j < inputArray[0].length; j++){
+                output = output + inputArray[i][j];
+            }
+        }
+        return output;
+    }
 }

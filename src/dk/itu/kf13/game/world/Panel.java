@@ -4,9 +4,12 @@
  */
 package dk.itu.kf13.game.world;
 
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -15,12 +18,21 @@ import javax.swing.JPanel;
 public class Panel extends JPanel implements KeyListener {
 
     Player player = new Player(0, 0, "B");
-    
+    public JTextArea ta = new JTextArea(18,55);
     
     // This is the constructor
-    public Panel() {
+    public Panel() throws IOException {
         super();
         addKeyListener(this);
+        //JTextArea ta = new JTextArea(18,55);
+        ta.setEditable(false);
+        ta.setFont(new Font("Courier new", Font.PLAIN, 16));
+        ta.setLineWrap(true);
+        add(ta);
+
+        Map map = new Map();
+        String mapString = map.multiArrayToString(map.smallMapToLargeMap(map.mapFileToSmallArray("Bane1.txt")));
+        ta.append(mapString);
         
     }
     

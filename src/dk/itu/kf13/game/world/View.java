@@ -5,6 +5,7 @@
 package dk.itu.kf13.game.world;
 
 import java.awt.Dimension;
+import java.io.IOException;
 import javax.swing.JFrame;
 
 /**
@@ -13,14 +14,14 @@ import javax.swing.JFrame;
  */
 public class View {
     
-    public int width = 300;
-    public int height = 300;
+    public int width = 600;
+    public int height = 400;
     String title = "Game title";
     
     JFrame jframe;
     
     
-    public void createFrame() {
+    public void createFrame() throws IOException {
         // Sets the size and title
         jframe = new JFrame(title);
         jframe.setPreferredSize(new Dimension(width,height));
