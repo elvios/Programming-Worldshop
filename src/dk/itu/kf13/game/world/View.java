@@ -19,22 +19,38 @@ public class View {
     String title = "Game title";
     
     JFrame jframe;
+    Panel panel;
     
-    
-    public void createFrame() throws IOException {
+    public void createFrame() throws IOException, InterruptedException {
         // Sets the size and title
         jframe = new JFrame(title);
         jframe.setPreferredSize(new Dimension(width,height));
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Loads the JPanel
-        Panel panel = new Panel();
+        panel = new Panel();
         jframe.add(panel);
         
         // Draws the entire window
         jframe.pack();
         jframe.setVisible(true);
         
+        //panel.repaint();
+        //Thread.sleep(500);
+        
     }
     
+    public void clearTextarea() {
+        
+        
+    }
+    
+    
+    public void runGame() throws IOException, InterruptedException {
+        while(true) {
+            
+            panel.ta.repaint();
+            Thread.sleep(500);
+        }
+    }
 }

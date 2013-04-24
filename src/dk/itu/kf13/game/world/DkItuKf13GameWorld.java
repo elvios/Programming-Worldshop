@@ -15,10 +15,12 @@ public class DkItuKf13GameWorld {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
                 
         View board = new View();
         board.createFrame();
+        board.runGame();
+        
     }
 }
 

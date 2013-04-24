@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
  */
 public class Panel extends JPanel implements KeyListener {
 
-    Player player = new Player(0, 0, "B");
+    Player player = new Player(5, 5, "B");
     public JTextArea ta = new JTextArea(18,55);
     
     // This is the constructor
@@ -29,12 +29,24 @@ public class Panel extends JPanel implements KeyListener {
         ta.setFont(new Font("Courier new", Font.PLAIN, 16));
         ta.setLineWrap(true);
         add(ta);
-
+        
         Map map = new Map();
-        String mapString = map.multiArrayToString(map.smallMapToLargeMap(map.mapFileToSmallArray("Bane1.txt")));
+
+        int[] playerCoordinates = player.getLocation();
+        int playerX = playerCoordinates[0];
+        int playerY = playerCoordinates[1];
+        
+        String[][] smallMap = map.mapFileToSmallArray("Bane1.txt");
+        smallMap = map.replaceLetterInMapArray(smallMap, "B", playerX, playerY);
+        String[][] largeMap = map.smallMapToLargeMap(smallMap);
+        String mapString = map.multiArrayToString(largeMap);
+
         ta.append(mapString);
         
     }
+    
+    
+    
     
     @Override
     public boolean isFocusTraversable() {

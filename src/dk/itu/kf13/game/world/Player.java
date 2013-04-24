@@ -15,15 +15,16 @@ public class Player {
     private String appearance;
     
     public Player(int start_x, int start_y, String start_appearance) {
-        x = start_x;
-        y = start_y;
-        appearance = start_appearance;
+        this.x = start_x;
+        this.y = start_y;
+        this.appearance = start_appearance;
     }
+
     
     public int[] getLocation() {
-        int[] array = null;
-        array[0] = x;
-        array[1] = y;
+        int[] array = {x,y};
+        //array[0] = x;
+        //array[1] = y;
         return array;
     }
     
