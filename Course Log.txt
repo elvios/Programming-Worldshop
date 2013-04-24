@@ -43,3 +43,6 @@ Today we got the JFrame to show a textarea, and then we got the textarea to show
 Next time we will try to paint the player in the textarea, and make the player move.
 
 
+April 24, 2013
+
+We got the player to be drawn on the map, but we could not make him move. That's the next step. To get the player to move around.
