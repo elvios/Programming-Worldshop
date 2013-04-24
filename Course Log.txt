@@ -33,10 +33,13 @@ Today we worked on implementing movement, but it didn't really work. We made a t
 ()     
 -----
 
-April 19, 2012
+April 19, 2013
 
 Today we received a wakeup call about not using evil wizards. This was usefull. We found out that we need to implement Jframe. For the last 3 weeks we have hoping we could avoid it. But we needed it for the keylistener. We have been working on MVC which we would like to have in our project. We have also worked on some player logic and got the player variables to change when we pressed the arrow keys.
 
+April 22, 2013
 
+Today we got the JFrame to show a textarea, and then we got the textarea to show our map.
+Next time we will try to paint the player in the textarea, and make the player move.
 
 
