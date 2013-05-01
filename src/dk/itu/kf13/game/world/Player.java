@@ -19,22 +19,35 @@ public class Player {
         this.y = start_y;
         this.appearance = start_appearance;
     }
+    
+    public int getX() {
+        return x;
+    }
 
-    
-    public int[] getLocation() {
-        int[] array = {x,y};
-        //array[0] = x;
-        //array[1] = y;
-        return array;
+    public int getY() {
+        return y;
     }
-    
-    public void printLocation() {
-        System.out.println(x + "," + y);
-    }
-    
+ 
     public void move(int moveX, int moveY) {
         x = x + moveX;
         y = y + moveY;
+        
+        //MapFunctions.legalMove(x,y, appearance) // true / false
+        
+                
+                
+        if(x < 0){
+            x = 0;
+        }
+         if(x > MapFunctions.MAP_WIDTH -1){
+            x = MapFunctions.MAP_WIDTH -1;
+        } 
+         if(y < 0){
+            y = 0;
+        } 
+         if(y > MapFunctions.MAP_HEIGHT -1){
+            y = MapFunctions.MAP_HEIGHT -1;
+        }
     }
     
     public String getAppearance() {

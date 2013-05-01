@@ -13,7 +13,10 @@ import java.io.IOException;
  *
  * @author Sarah de Voss
  */
-public class Map {
+public class MapFunctions {
+    
+    public static final int MAP_WIDTH = 11;
+    public static final int MAP_HEIGHT = 6; 
 
     /**
      *

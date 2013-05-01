@@ -12,14 +12,15 @@ import javax.swing.JFrame;
  *
  * @author Sarah de Voss
  */
-public class View {
+public class WindowFrameAndThreadLoop {
     
+    // Sets the dimensions of the JFrame
     public int width = 600;
     public int height = 400;
     String title = "Game title";
     
     JFrame jframe;
-    Panel panel;
+    PanelAndKeyListenerAndMapConversion panel;
     
     public void createFrame() throws IOException, InterruptedException {
         // Sets the size and title
@@ -28,29 +29,21 @@ public class View {
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Loads the JPanel
-        panel = new Panel();
+        panel = new PanelAndKeyListenerAndMapConversion();
         jframe.add(panel);
         
         // Draws the entire window
         jframe.pack();
-        jframe.setVisible(true);
-        
-        //panel.repaint();
-        //Thread.sleep(500);
+        jframe.setVisible(true);        
         
     }
-    
-    public void clearTextarea() {
-        
-        
-    }
-    
     
     public void runGame() throws IOException, InterruptedException {
-        while(true) {
-            
-            panel.ta.repaint();
-            Thread.sleep(500);
+        
+        while(true) {            
+            panel.repaint();
+            Thread.sleep(20);
         }
+        
     }
 }

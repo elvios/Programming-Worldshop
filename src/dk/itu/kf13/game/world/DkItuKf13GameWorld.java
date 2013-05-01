@@ -17,7 +17,7 @@ public class DkItuKf13GameWorld {
      */
     public static void main(String[] args) throws IOException, InterruptedException {
                 
-        View board = new View();
+        WindowFrameAndThreadLoop board = new WindowFrameAndThreadLoop();
         board.createFrame();
         board.runGame();
         
