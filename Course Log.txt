@@ -46,3 +46,13 @@ Next time we will try to paint the player in the textarea, and make the player m
 April 24, 2013
 
 We got the player to be drawn on the map, but we could not make him move. That's the next step. To get the player to move around.
+
+May 1, 2013
+
+Major cleanup day - refactoring, removing irrelevant code, and refreshing the JFrame.
+And we got the player to move around. yay!
+
+May 3, 2013
+
+Today we added the class Blocks, which tells which blocks cannot move into other blocks. So now, the boat can only move in water, and swamp, but not on the grass. And if the boat is in the swamps, then it moves 10 times slower. And if it touches the tornado, the controls are reversed, so up is down, and left is right.
+Next step is to get the tornado to move around sort of randomly.

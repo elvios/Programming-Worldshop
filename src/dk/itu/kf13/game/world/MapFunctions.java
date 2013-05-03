@@ -18,6 +18,16 @@ public class MapFunctions {
     public static final int MAP_WIDTH = 11;
     public static final int MAP_HEIGHT = 6; 
 
+    
+    // Loads the original map into a variable.
+    public String[][] originalMap;
+    
+
+    public String[][] getOriginalMap() throws IOException {
+        originalMap = mapFileToSmallArray("Bane1.txt");
+        return originalMap;
+    }
+    
     /**
      *
      * @param filepath
@@ -73,11 +83,11 @@ public class MapFunctions {
         int rows = mapArray.length;
         int cols = mapArray[0].length();
         
-        String[][] smallMapArray = new String[rows][cols];
+        String[][] smallMapArray = new String[cols][rows];
         
         for ( int i = 0 ; i < rows ; i++ ) {
             for ( int j = 0 ; j < cols ; j++ ) {
-                smallMapArray[i][j] = mapArray[i].substring(j, j+1);
+                smallMapArray[j][i] = mapArray[i].substring(j, j+1);
             }
         }
         
@@ -93,22 +103,23 @@ public class MapFunctions {
     public String[][] smallMapToLargeMap(String[][] mapArray) throws IOException {
         
         // We find the dimensions of the large map
-        int rows = mapArray.length * 3;
-        int cols = mapArray[0].length;
+        int cols = mapArray.length; // 11
+        int rows = mapArray[0].length * 3; // we need 3 times as many rows.
 
-        // Begins to create the larger map array.
-        String[][] LargeMapArray = new String[rows][cols];
-        for (int i = 0; i < mapArray.length; i++) {
+        // Begins to create the larger map array with the new dimension.
+        String[][] LargeMapArray = new String[cols][rows];
+        
+        for (int i = 0; i < mapArray[0].length; i++) {
             for (int j = 0; j < cols; j++) {
 
                 // Gets the block file and loads it into an array.
-                String letter = mapArray[i][j];
+                String letter = mapArray[j][i];
                 String[] blockArray = fileToArray("src\\dk\\itu\\kf13\\game\\world\\Blocks\\" + letter + ".txt");
 
                 // Puts the blocks into the array.
-                LargeMapArray[3 * i][j] = blockArray[0];
-                LargeMapArray[3 * i + 1][j] = blockArray[1];
-                LargeMapArray[3 * i + 2][j] = blockArray[2];
+                LargeMapArray[j][3 * i] = blockArray[0];
+                LargeMapArray[j][3 * i + 1] = blockArray[1];
+                LargeMapArray[j][3 * i + 2] = blockArray[2];
 
             }
         }
@@ -121,7 +132,7 @@ public class MapFunctions {
         int cols = inputArray[0].length;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                System.out.print(inputArray[i][j]);
+                System.out.print(inputArray[j][i]);
             }
             System.out.println();
         }
@@ -129,15 +140,15 @@ public class MapFunctions {
     
     public String[][] replaceLetterInMapArray(String[][] mapArray, String replacement, int x, int y) {
         // We replace the letter in coordinates x,y and return it.
-        mapArray[y][x] = replacement;
+        mapArray[x][y] = replacement;
         return mapArray;
     }
     
     public String multiArrayToString(String[][] inputArray) {
         String output = "";
-        for (int i = 0; i < inputArray.length; i++) {
-            for (int j = 0; j < inputArray[0].length; j++){
-                output = output + inputArray[i][j];
+        for (int i = 0; i < inputArray[0].length; i++) {
+            for (int j = 0; j < inputArray.length; j++){
+                output = output + inputArray[j][i];
             }
         }
         return output;
