@@ -22,7 +22,16 @@ public class PanelAndKeyListenerAndMapConversion extends JPanel implements KeyLi
 
     // Sets the player start-position and appearance.
     Player player = new Player(0, 0, "B", 1);
+
+    // Loads in all the enemies.
+    Enemy tornado = new Enemy(2, 2, "TUV ", 5, 5, 0, 0, 9, 9);
+    Enemy tornado2 = new Enemy(2, 2, "TUV ", 11, 5, 10, 0, 19, 9);
+    Enemy pig = new Enemy(1, 1, "P", 19, 9, 0, 0, 19, 9);
     
+    int counter = 0;
+
+    public static String[][] smallMap;
+
     // Gets the map height and width from the MapFunctions class.
     // They are final variables.
     int height = MapFunctions.MAP_HEIGHT * 3;
@@ -43,6 +52,7 @@ public class PanelAndKeyListenerAndMapConversion extends JPanel implements KeyLi
         add(ta);
         
         String[][] smallMap = map.replaceLetterInMapArray(map.getOriginalMap(), "B", player.getX(), player.getY());
+        
         String[][] largeMap = map.smallMapToLargeMap(smallMap);
         String mapString = map.multiArrayToString(largeMap);
 
@@ -88,9 +98,6 @@ public class PanelAndKeyListenerAndMapConversion extends JPanel implements KeyLi
     @Override
     public void keyReleased(KeyEvent e) {
     }
-    
-    
-   
    
      @Override
     public void paint(Graphics g) {
@@ -98,18 +105,35 @@ public class PanelAndKeyListenerAndMapConversion extends JPanel implements KeyLi
          try {
             super.paint(g); // Call it's parent for proper rendering.
      
-            String[][] originalMap = map.getOriginalMap();
-            
-            String[][] smallMap = map.replaceLetterInMapArray(originalMap, "B", player.getX(), player.getY());
+            smallMap = map.getOriginalMap();
+ 
+            tornado.render(smallMap, map);
+            tornado2.render(smallMap, map);
+            pig.render(smallMap, map);
+            // places the player (as a boat)
+            smallMap = map.replaceLetterInMapArray(smallMap, "B", player.getX(), player.getY());
+ 
             String[][] largeMap = map.smallMapToLargeMap(smallMap);
             String mapString = map.multiArrayToString(largeMap);
 
             int len = mapString.length();
             ta.replaceRange(mapString, 0, len);
+ 
+ 
+            // This counter makes the enemies move a little slower than the 
+            // Thread.sleep.
+            counter++;
+            if ( counter == 10 ) {
+                tornado.move();
+                tornado2.move();
+                pig.move();
+                
+                counter = 0;
+            }
+            
             
         } catch (IOException ex) {
             Logger.getLogger(PanelAndKeyListenerAndMapConversion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }

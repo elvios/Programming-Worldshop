@@ -1,0 +1,2 @@
+skriv om MVC hvis vi ikke når at implementere det.
+skriv om inheritance og superclasses (brug eksempel med superclass Enemy og subclass Tornado, og Pig.) - hvis vi ikke når at implementere det.

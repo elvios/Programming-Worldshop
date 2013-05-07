@@ -15,8 +15,8 @@ import java.io.IOException;
  */
 public class MapFunctions {
     
-    public static final int MAP_WIDTH = 11;
-    public static final int MAP_HEIGHT = 6; 
+    public static final int MAP_WIDTH = 20;
+    public static final int MAP_HEIGHT = 10; 
 
     
     // Loads the original map into a variable.
@@ -24,7 +24,7 @@ public class MapFunctions {
     
 
     public String[][] getOriginalMap() throws IOException {
-        originalMap = mapFileToSmallArray("Bane1.txt");
+        originalMap = mapFileToSmallArray("Map1.txt");
         return originalMap;
     }
     

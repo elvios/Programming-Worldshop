@@ -15,9 +15,9 @@ import javax.swing.JFrame;
 public class WindowFrameAndThreadLoop {
     
     // Sets the dimensions of the JFrame
-    public int width = 600;
-    public int height = 400;
-    String title = "Game title";
+    public int width = 1025;
+    public int height = 620;
+    String title = "Find an iPhone, iCharger, and an iWindmill in that iOrder.";
     
     JFrame jframe;
     PanelAndKeyListenerAndMapConversion panel;
@@ -41,6 +41,7 @@ public class WindowFrameAndThreadLoop {
     public void runGame() throws IOException, InterruptedException {
         
         while(true) {            
+            
             panel.repaint();
             Thread.sleep(20);
         }

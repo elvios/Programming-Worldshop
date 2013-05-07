@@ -20,7 +20,6 @@ public class DkItuKf13GameWorld {
         WindowFrameAndThreadLoop board = new WindowFrameAndThreadLoop();
         board.createFrame();
         board.runGame();
-        
     }
 }
 
