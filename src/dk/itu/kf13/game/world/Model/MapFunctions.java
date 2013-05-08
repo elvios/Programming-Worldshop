@@ -66,7 +66,7 @@ public class MapFunctions {
     
     public String[][] mapFileToSmallArray(String mapName) throws IOException {
         // We load the map file into an array.
-        String[] mapArray = fileToArray("src\\dk\\itu\\kf13\\game\\world\\Maps\\" + mapName);
+        String[] mapArray = fileToArray("src\\dk\\itu\\kf13\\game\\world\\View\\Maps\\" + mapName);
         
         int rows = mapArray.length;
         int cols = mapArray[0].length();

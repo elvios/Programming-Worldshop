@@ -63,3 +63,8 @@ Today we got the tornado to move.
 And we made it so it was easy to make multiple tornadoes and enemies (pigs for example).
 We got a hint about making the enemy class a superclass, and then making tornado and pig subclasses of that class. That is maybe the next step.
 Also next step is to implement MVC.
+
+May 8, 2013
+
+We tried to implement MVC, but we could not seperate the KeyListener and Panel from each other without making a mess.
+Although - the MVC model does make sense, and we would still like to try to give it a shot.
