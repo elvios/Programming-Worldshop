@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.itu.kf13.game.world;
+package dk.itu.kf13.game.world.Model;
 
+import dk.itu.kf13.game.world.View.Panel;
 import java.io.IOException;
 
 /**
@@ -12,8 +13,8 @@ import java.io.IOException;
  */
 public class Player {
 
-    private int x;
-    private int y;
+    public static int x;
+    public static int y;
     private int newX;
     private int newY;
     public static int movementValue;
@@ -66,7 +67,7 @@ public class Player {
         // Because if it is above 1, one does not move.
         if ( moveX != 0 || moveY != 0 ) {
 
-            // These if-clauses check that we do not get out of bounds of the map.
+            // These if-clauses check that we do not get out of bounds of the mapFunc.
             if(newX < 0){
                 newX = 0;
             }
@@ -80,13 +81,13 @@ public class Player {
                 newY = MapFunctions.MAP_HEIGHT -1;
             }
              
-            // Loads the original map
-            // TODO: this should be changed to what the map looks like
+            // Loads the original mapFunc
+            // TODO: this should be changed to what the mapFunc looks like
             // right now. Because if the tornado moves around, the new
             // location of the tornado will not be a part of _the_original_map_
             String[][] originalMap = map.getOriginalMap();
 
-            String[][] smallMap = PanelAndKeyListenerAndMapConversion.smallMap;
+            String[][] smallMap = Panel.smallMap;
             
             // Checks if the player is allowed to move here.
             legalMove = block.isMoveLegal(appearance, originalMap[newX][newY]);
@@ -94,9 +95,9 @@ public class Player {
             // Checks if the player gets any special movement.
             // (but only if the movement is allowed)
             if ( legalMove == true ) {
-                block.specialMovement(appearance, smallMap[newX][newY]);
-                x = newX;
-                y = newY;
+                //block.specialMovement(appearance, smallMap[newX][newY]);
+                this.x = newX;
+                this.y = newY;
             }
         }
     }

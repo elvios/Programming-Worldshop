@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.itu.kf13.game.world;
+package dk.itu.kf13.game.world.Model;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -16,24 +16,13 @@ import java.io.IOException;
 public class MapFunctions {
     
     public static final int MAP_WIDTH = 20;
-    public static final int MAP_HEIGHT = 10; 
-
+    public static final int MAP_HEIGHT = 10;
     
-    // Loads the original map into a variable.
-    public String[][] originalMap;
-    
-
     public String[][] getOriginalMap() throws IOException {
-        originalMap = mapFileToSmallArray("Map1.txt");
+        String[][] originalMap = mapFileToSmallArray("Map1.txt");
         return originalMap;
     }
     
-    /**
-     *
-     * @param filepath
-     * @return
-     * @throws IOException
-     */
     public String[] fileToArray(String filepath) throws IOException {
         FileReader fr = new FileReader(filepath);
         BufferedReader textReader = new BufferedReader(fr);
@@ -74,7 +63,6 @@ public class MapFunctions {
 
         return counter;
     }
-
     
     public String[][] mapFileToSmallArray(String mapName) throws IOException {
         // We load the map file into an array.
@@ -94,63 +82,9 @@ public class MapFunctions {
         return smallMapArray;
     }
     
-    /**
-     *
-     * @param mapName
-     * @return
-     * @throws IOException
-     */
-    public String[][] smallMapToLargeMap(String[][] mapArray) throws IOException {
-        
-        // We find the dimensions of the large map
-        int cols = mapArray.length; // 11
-        int rows = mapArray[0].length * 3; // we need 3 times as many rows.
-
-        // Begins to create the larger map array with the new dimension.
-        String[][] LargeMapArray = new String[cols][rows];
-        
-        for (int i = 0; i < mapArray[0].length; i++) {
-            for (int j = 0; j < cols; j++) {
-
-                // Gets the block file and loads it into an array.
-                String letter = mapArray[j][i];
-                String[] blockArray = fileToArray("src\\dk\\itu\\kf13\\game\\world\\Blocks\\" + letter + ".txt");
-
-                // Puts the blocks into the array.
-                LargeMapArray[j][3 * i] = blockArray[0];
-                LargeMapArray[j][3 * i + 1] = blockArray[1];
-                LargeMapArray[j][3 * i + 2] = blockArray[2];
-
-            }
-        }
-
-        return LargeMapArray;
-    }
-    
-    public void printMultiArray(String[][] inputArray) {
-        int rows = inputArray.length;
-        int cols = inputArray[0].length;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                System.out.print(inputArray[j][i]);
-            }
-            System.out.println();
-        }
-    }
-    
     public String[][] replaceLetterInMapArray(String[][] mapArray, String replacement, int x, int y) {
         // We replace the letter in coordinates x,y and return it.
         mapArray[x][y] = replacement;
         return mapArray;
-    }
-    
-    public String multiArrayToString(String[][] inputArray) {
-        String output = "";
-        for (int i = 0; i < inputArray[0].length; i++) {
-            for (int j = 0; j < inputArray.length; j++){
-                output = output + inputArray[j][i];
-            }
-        }
-        return output;
     }
 }

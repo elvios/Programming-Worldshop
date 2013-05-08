@@ -4,6 +4,8 @@
  */
 package dk.itu.kf13.game.world;
 
+import dk.itu.kf13.game.world.View.Frame;
+import dk.itu.kf13.game.world.View.Panel;
 import java.io.IOException;
 
 /**
@@ -16,10 +18,17 @@ public class DkItuKf13GameWorld {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, InterruptedException {
-                
-        WindowFrameAndThreadLoop board = new WindowFrameAndThreadLoop();
-        board.createFrame();
-        board.runGame();
+
+
+        Frame frame = new Frame();
+        Panel panel = new Panel();
+
+        frame.createFrame();
+
+        // Main loop.
+        while (true) {
+            panel.repaint();
+            Thread.sleep(20);
+        }
     }
 }
-
