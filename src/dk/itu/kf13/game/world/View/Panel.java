@@ -4,6 +4,7 @@
  */
 package dk.itu.kf13.game.world.View;
 
+import dk.itu.kf13.game.world.Controller.KListener;
 import dk.itu.kf13.game.world.Model.BlockFunctions;
 import dk.itu.kf13.game.world.Model.Enemy;
 import dk.itu.kf13.game.world.Model.MapFunctions;
@@ -22,7 +23,7 @@ import javax.swing.JTextArea;
  *
  * @author Sarah de Voss
  */
-public class Panel extends JPanel implements KeyListener {
+public class Panel extends JPanel {
 
     // Sets the player start-position and appearance.
     Player player = new Player(0, 0, "B", 1);
@@ -35,6 +36,7 @@ public class Panel extends JPanel implements KeyListener {
     BlockFunctions blockFunc = new BlockFunctions();
     MapFunctions mapFunc = new MapFunctions();
     MapConversion mapConv = new MapConversion();
+    KListener kListener = new KListener();
     
     int counter = 0;
     public static String[][] smallMap;
@@ -52,7 +54,7 @@ public class Panel extends JPanel implements KeyListener {
     public Panel() throws IOException {
 
         super(); // calls the parent.
-        addKeyListener(this);
+        this.addKeyListener(kListener);
         
         // Sets attributes for the textarea.
         ta.setEditable(false);
@@ -111,38 +113,5 @@ public class Panel extends JPanel implements KeyListener {
         } catch (IOException ex) {
             Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        try {        
-            int KeyCode = e.getKeyCode();
-            switch (KeyCode) {
-
-                case KeyEvent.VK_LEFT:
-                    player.move(-1, 0);
-                break;
-                case KeyEvent.VK_RIGHT:
-                    player.move(1, 0);
-                break;
-                case KeyEvent.VK_UP:
-                    player.move(0, -1);
-                break;
-                case KeyEvent.VK_DOWN:
-                    player.move(0, 1);
-                break;
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
     }
 }
