@@ -17,41 +17,40 @@ import java.util.logging.Logger;
  */
 public class KListener implements KeyListener {
 
-    Player player;
-    
-    @Override
-    public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	public boolean left = false;
+	public boolean right = false;
+	public boolean up = false;
+	public boolean down = false;
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-        try {
-            int KeyCode = e.getKeyCode();
-                switch (KeyCode) {
+	@Override
+	public void keyTyped(KeyEvent e) {
+	}
 
-                    case KeyEvent.VK_LEFT:
-                        player.move(-1, 0);
-                        System.out.println("hej");
-                    break;
-                    case KeyEvent.VK_RIGHT:
-                        player.move(1, 0);
-                    break;
-                    case KeyEvent.VK_UP:
-                        player.move(0, -1);
-                    break;
-                    case KeyEvent.VK_DOWN:
-                        player.move(0, 1);
-                    break;
-                }
-        } catch (IOException ex) {
-            Logger.getLogger(KListener.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int KeyCode = e.getKeyCode();
+		switch (KeyCode) {
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
+			case KeyEvent.VK_LEFT:
+				left = true;
+				break;
+			case KeyEvent.VK_RIGHT:
+				right = true;
+				break;
+			case KeyEvent.VK_UP:
+				up = true;
+				break;
+			case KeyEvent.VK_DOWN:
+				down = true;
+				break;
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+	}
+
+	public void doNotMove() {
+		left = right = up = down = false;
+	}
 }

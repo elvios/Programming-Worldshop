@@ -29,7 +29,8 @@ public class MapConversion {
 
                 // Gets the block file and loads it into an array.
                 String letter = mapArray[j][i];
-                String[] blockArray = mapFunc.fileToArray("src\\dk\\itu\\kf13\\game\\world\\View\\Blocks\\" + letter + ".txt");
+                //String[] blockArray = mapFunc.fileToArray("src\\dk\\itu\\kf13\\game\\world\\View\\Blocks\\" + letter + ".txt");
+                String[] blockArray = mapFunc.fileToArray("src/dk/itu/kf13/game/world/View/Blocks/" + letter + ".txt");
 
                 // Puts the blocks into the array.
                 LargeMapArray[j][3 * i] = blockArray[0];

@@ -4,6 +4,7 @@
  */
 package dk.itu.kf13.game.world.Model;
 
+import dk.itu.kf13.game.world.Controller.KListener;
 import dk.itu.kf13.game.world.View.Panel;
 import java.io.IOException;
 
@@ -31,6 +32,27 @@ public class Player {
         this.movementValue = startMovementValue;
     }
     
+
+		public void update(KListener kListener) throws IOException {
+			if ( kListener.left ) {
+				move(-1,0);
+			}
+
+			if ( kListener.right ) {
+				move(1,0);
+			}
+
+			if ( kListener.up ) {
+				move(0,-1);
+			}
+
+			if ( kListener.down ) {
+				move(0,1);
+			}
+
+		}
+
+
     public int getX() {
         return x;
     }
@@ -42,6 +64,7 @@ public class Player {
     public String getAppearance() {
         return appearance;
     } 
+
     public void move(int moveX, int moveY) throws IOException {
         
         // If the movementValue is below 1, one moves backwards.

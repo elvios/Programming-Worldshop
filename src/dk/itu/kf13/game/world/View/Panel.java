@@ -11,8 +11,6 @@ import dk.itu.kf13.game.world.Model.MapFunctions;
 import dk.itu.kf13.game.world.Model.Player;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,7 +53,8 @@ public class Panel extends JPanel {
 
         super(); // calls the parent.
         this.addKeyListener(kListener);
-        
+				setFocusable(true);
+
         // Sets attributes for the textarea.
         ta.setEditable(false);
         ta.setFont(new Font("Courier new", Font.PLAIN, 16));
@@ -109,6 +108,11 @@ public class Panel extends JPanel {
 
                 counter = 0;
             }
+
+						// repainting
+						player.update(kListener);
+						kListener.doNotMove();
+						repaint();
 
         } catch (IOException ex) {
             Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
