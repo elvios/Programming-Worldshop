@@ -17,7 +17,7 @@ public class Frame {
     // Sets the dimensions and title of the JFrame
     public int width = 1025;
     public int height = 620;
-    String title = "Find an iPhone, iCharger, and an iWindmill in that iOrder.";
+    String title = "Find the childrens scooter.";
     JFrame jframe;
     Panel panel;
 
