@@ -34,11 +34,10 @@ public class PlayerTest {
 	public void testUpdate() {
 		System.out.println("update");
 		KListener kListener = null;
-		Player instance = null;
-		//instance.update(kListener);
-		boolean left = true;
+		Player instance = new Player(0,0,"B",1);
+		instance.update(kListener);
 		// TODO review the generated test code and remove the default call to fail.
-		assertTrue(left);
+		fail("");
 	}
 
 	/**
@@ -47,8 +46,8 @@ public class PlayerTest {
 	@Test
 	public void testGetX() {
 		System.out.println("getX");
-		Player instance = null;
-		int expResult = 0;
+		Player instance = new Player(2, 2, "B", 1);
+		int expResult = 2;
 		int result = instance.getX();
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
@@ -60,12 +59,11 @@ public class PlayerTest {
 	@Test
 	public void testGetY() {
 		System.out.println("getY");
-		Player instance = null;
-		int expResult = 0;
+		Player instance = new Player(2, 2, "B", 1);
+		int expResult = 2;
 		int result = instance.getY();
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -74,12 +72,11 @@ public class PlayerTest {
 	@Test
 	public void testGetAppearance() {
 		System.out.println("getAppearance");
-		Player instance = null;
-		String expResult = "";
+		Player instance = new Player(0,0,"B",1);
+		String expResult = "B";
 		String result = instance.getAppearance();
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -88,11 +85,11 @@ public class PlayerTest {
 	@Test
 	public void testMove() {
 		System.out.println("move");
-		int moveX = 0;
+		int moveX = 1;
 		int moveY = 0;
-		Player instance = null;
+		Player instance = new Player(0,0,"B",1);
 		instance.move(moveX, moveY);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		assertEquals(instance.getX(), 1);
 	}
 }
