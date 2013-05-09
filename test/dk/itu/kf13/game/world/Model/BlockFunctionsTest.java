@@ -41,15 +41,47 @@ public class BlockFunctionsTest {
 	}
 
 	/**
-	 * Test of specialMovement method, of class BlockFunctions.
+	 * Test of backwardsMove method, of class BlockFunctions.
 	 */
 	@Test
-	public void testSpecialMovement() {
-		System.out.println("specialMovement");
+	public void testBackwardsMove() {
+		System.out.println("backwardsMove");
 		String blockA = "B";
 		String blockB = "U";
 		BlockFunctions instance = new BlockFunctions();
 		instance.backwardsMove(blockA, blockB);
-		assertEquals(Player.movementValue, -5);
+		int result = Player.movementValue;
+		int expResult = -5;
+		assertEquals(result, expResult);
+	}
+
+	/**
+	 * Test of slowMove method, of class BlockFunctions.
+	 */
+	@Test
+	public void testSlowMove() {
+		System.out.println("slowMove");
+		String blockA = "B";
+		String blockB = "s";
+		BlockFunctions instance = new BlockFunctions();
+		instance.slowMove(blockA, blockB);
+		int result = Player.movementValue;
+		int expResult = 5;
+		assertEquals(result, expResult);
+	}
+
+	/**
+	 * Test of spawnMove method, of class BlockFunctions.
+	 */
+	@Test
+	public void testSpawnMove() {
+		System.out.println("spawnMove");
+		Player player = new Player(1,1,"O",1);
+		String blockA = "O";
+		String blockB = "P";
+		BlockFunctions instance = new BlockFunctions();
+		instance.spawnMove(blockA, blockB);
+		assertEquals(0, player.getX());
+		assertEquals(0, player.getY());
 	}
 }
