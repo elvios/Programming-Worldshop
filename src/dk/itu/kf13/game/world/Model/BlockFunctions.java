@@ -19,10 +19,11 @@ public class BlockFunctions {
 
 	// Array with the blocks that result in slow movement.
     String[][] slowMovement = new String[][]{
+			{"B", "s", "5"}
     };
 
 	// Array with legal movements.
-    String[][] legalMovement = new String[][]{
+    String[][] illegalMovement = new String[][]{
         {"B", "g"}
     };
 
@@ -33,9 +34,9 @@ public class BlockFunctions {
 
     public boolean isMoveLegal(String blockA, String blockB) {
 
-        for (int i = 0; i < legalMovement.length; i++) {
-            String first = legalMovement[i][0];
-            String second = legalMovement[i][1];
+        for (int i = 0; i < illegalMovement.length; i++) {
+            String first = illegalMovement[i][0];
+            String second = illegalMovement[i][1];
 
             if (first.equals(blockA) && second.equals(blockB)) {
                 return false;

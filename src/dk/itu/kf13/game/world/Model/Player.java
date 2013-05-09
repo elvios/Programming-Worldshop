@@ -6,9 +6,6 @@ package dk.itu.kf13.game.world.Model;
 
 import dk.itu.kf13.game.world.Controller.KListener;
 import dk.itu.kf13.game.world.View.Panel;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -37,7 +34,6 @@ public class Player {
         this.y = startY;
         this.appearance = startAppearance;
         this.movementValue = startMovementValue;
-				this.appearanceTimer = 0;
     }
     
 		public void update(KListener kListener) {
@@ -59,7 +55,6 @@ public class Player {
 
 			if ( kListener.changeAppearance ) {
 				appearance = "O";
-				appearanceTimer = 20;
 			}
 
 		}
@@ -130,6 +125,5 @@ public class Player {
                 this.y = newY;
             }
         }
-
     }
 }

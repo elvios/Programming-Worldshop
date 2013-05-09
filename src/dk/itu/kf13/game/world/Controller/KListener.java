@@ -4,12 +4,8 @@
  */
 package dk.itu.kf13.game.world.Controller;
 
-import dk.itu.kf13.game.world.Model.Player;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

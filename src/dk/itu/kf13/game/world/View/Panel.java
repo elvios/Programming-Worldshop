@@ -80,9 +80,7 @@ public class Panel extends JPanel {
 
             // checks if there is any special movement going on.
             smallMapWithoutPlayer = smallMap; //array of the mapFunc without player
-            blockFunc.specialMovement(
-                    player.getAppearance(),
-                    smallMapWithoutPlayer[player.getX()][player.getY()]);
+
 
             // Places the PLAYER in mapFunc array.
             smallMap = mapFunc.replaceLetterInMapArray(smallMap, player.getAppearance(), player.getX(), player.getY());
@@ -106,9 +104,16 @@ public class Panel extends JPanel {
                 counter = 0;
             }
 
-						// repainting
+						// Reads what the keylistener has got.
 						player.update(kListener);
+
+						// Sets special movement.
+            blockFunc.specialMovement( player.getAppearance(), smallMapWithoutPlayer[player.getX()][player.getY()]);
+
+						// Resets the Keylistener.
 						kListener.doNotMove();
+
+						// repainting
 						repaint();
 
     }
