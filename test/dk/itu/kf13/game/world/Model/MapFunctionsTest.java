@@ -33,11 +33,11 @@ public class MapFunctionsTest {
 	public void testGetOriginalMap() {
 		System.out.println("getOriginalMap");
 		MapFunctions instance = new MapFunctions();
-		String[][] expResult = null;
-		String[][] result = instance.getOriginalMap();
-		assertArrayEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		String expResult = "w";
+		String[][] smallMap = instance.getOriginalMap();
+		String result = smallMap[0][0];
+
+		assertEquals(expResult, result);
 	}
 
 	/**
@@ -46,13 +46,16 @@ public class MapFunctionsTest {
 	@Test
 	public void testFileToArray() {
 		System.out.println("fileToArray");
-		String filepath = "";
+
+		String filepath = "src/dk/itu/kf13/game/world/View/Blocks/w.txt"; // for linux
+		//String filepath = "src\\dk\\itu\\kf13\\game\\world\\View\\Blocks\\w.txt"; // for windows
+
 		MapFunctions instance = new MapFunctions();
-		String[] expResult = null;
-		String[] result = instance.fileToArray(filepath);
-		assertArrayEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		String expResult = "  ~  ";
+		String[] resultArray = instance.fileToArray(filepath);
+		String result = resultArray[1];
+		System.out.println(resultArray[1]);
+		assertEquals(expResult, result);
 	}
 
 	/**
@@ -61,13 +64,12 @@ public class MapFunctionsTest {
 	@Test
 	public void testNumberOfLinesInFile() {
 		System.out.println("numberOfLinesInFile");
-		String filepath = "";
+		String filepath = "src/dk/itu/kf13/game/world/View/Blocks/w.txt"; // for linux
+		//String filepath = "src\\dk\\itu\\kf13\\game\\world\\View\\Blocks\\w.txt"; // for windows
 		MapFunctions instance = new MapFunctions();
-		int expResult = 0;
+		int expResult = 3;
 		int result = instance.numberOfLinesInFile(filepath);
 		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -76,13 +78,12 @@ public class MapFunctionsTest {
 	@Test
 	public void testMapFileToSmallArray() {
 		System.out.println("mapFileToSmallArray");
-		String mapName = "";
+		String mapName = "Map1.txt";
 		MapFunctions instance = new MapFunctions();
-		String[][] expResult = null;
-		String[][] result = instance.mapFileToSmallArray(mapName);
-		assertArrayEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		String expResult = "w";
+		String[][] resultArray = instance.mapFileToSmallArray(mapName);
+		String result = resultArray[0][0];
+		assertEquals(expResult, result);
 	}
 
 	/**
@@ -91,15 +92,16 @@ public class MapFunctionsTest {
 	@Test
 	public void testReplaceLetterInMapArray() {
 		System.out.println("replaceLetterInMapArray");
-		String[][] mapArray = null;
-		String replacement = "";
+		MapFunctions instance = new MapFunctions();
+
+		String[][] mapArray = instance.mapFileToSmallArray("Map1.txt");
+		String replacement = "B";
 		int x = 0;
 		int y = 0;
-		MapFunctions instance = new MapFunctions();
-		String[][] expResult = null;
-		String[][] result = instance.replaceLetterInMapArray(mapArray, replacement, x, y);
-		assertArrayEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+
+		assertEquals(mapArray[0][0], "w");
+
+		mapArray = instance.replaceLetterInMapArray(mapArray, replacement, x, y);
+		assertEquals(mapArray[0][0], "B");
 	}
 }
