@@ -4,8 +4,6 @@
  */
 package dk.itu.kf13.game.world.Model;
 
-import dk.itu.kf13.game.world.Model.Player;
-
 /**
  *
  * @author Sarah de Voss
@@ -18,7 +16,7 @@ public class BlockFunctions {
         {"B", "V", "-5"}
     };
     String[][] slowMovement = new String[][]{
-        {"B", "S", "10"}
+        {"B", "s", "4"}
     };
     String[][] legalMovement = new String[][]{
         {"B", "g"}
@@ -43,6 +41,7 @@ public class BlockFunctions {
 
     public void specialMovement(String blockA, String blockB) {
 
+			// Checks for BACKWARDS movement
         for (int i = 0; i < backwardsMovement.length; i++) {
             String first = backwardsMovement[i][0];
             String second = backwardsMovement[i][1];
@@ -53,16 +52,18 @@ public class BlockFunctions {
             }
         }
 
-        for (int i = 0; i < slowMovement.length; i++) {
+			// Checks for SLOW movement
+        for ( int i = 0; i < slowMovement.length; i++ ) {
             String first = slowMovement[i][0];
             String second = slowMovement[i][1];
             String third = slowMovement[i][2];
 
-            if (first.equals(blockA) && second.equals(blockB)) {
+            if (first.equals(blockA) && second.equals(blockB) && Player.movementValue <= 1) {
                 Player.movementValue = Integer.parseInt(third);
             }
         }
 
+			// Checks for SPAWN movement
         for (int i = 0; i < spawnMovement.length; i++) {
             String first = spawnMovement[i][0];
             String second = spawnMovement[i][1];

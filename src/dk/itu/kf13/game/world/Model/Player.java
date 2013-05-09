@@ -22,6 +22,9 @@ public class Player {
     private String appearance;
     private boolean legalMove;
 
+		String[][] originalMap;
+		String[][] smallMap;
+
     BlockFunctions block = new BlockFunctions();
     MapFunctions mapFunc = new MapFunctions();
     
@@ -67,7 +70,9 @@ public class Player {
     } 
 
     public void move(int moveX, int moveY) throws IOException {
-        
+
+			System.out.println(movementValue);
+
         // If the movementValue is below 1, one moves backwards.
         if ( movementValue < 1 ) {
             moveX = -moveX;
@@ -106,23 +111,19 @@ public class Player {
             }
              
             // Loads the original mapFunc
-            // TODO: this should be changed to what the mapFunc looks like
-            // right now. Because if the tornado moves around, the new
-            // location of the tornado will not be a part of _the_original_map_
-            String[][] originalMap = mapFunc.getOriginalMap();
+            originalMap = mapFunc.getOriginalMap();
 
-            String[][] smallMap = Panel.smallMap;
+            smallMap = Panel.smallMap;
             
             // Checks if the player is allowed to move here.
             legalMove = block.isMoveLegal(appearance, originalMap[newX][newY]);
 
-            // Checks if the player gets any special movement.
-            // (but only if the movement is allowed)
+						// Moves if the movement is allowed.
             if ( legalMove == true ) {
-                //block.specialMovement(appearance, smallMap[newX][newY]);
                 this.x = newX;
                 this.y = newY;
             }
         }
+
     }
 }
