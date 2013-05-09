@@ -33,11 +33,11 @@ public class PlayerTest {
 	@Test
 	public void testUpdate() {
 		System.out.println("update");
-		KListener kListener = null;
+		KListener kListener = new KListener();
 		Player instance = new Player(0,0,"B",1);
+		instance.move(1, 0);
 		instance.update(kListener);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("");
+		assertTrue(kListener.right);
 	}
 
 	/**
@@ -50,7 +50,6 @@ public class PlayerTest {
 		int expResult = 2;
 		int result = instance.getX();
 		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**

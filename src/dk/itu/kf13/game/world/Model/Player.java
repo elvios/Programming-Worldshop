@@ -40,7 +40,6 @@ public class Player {
 				this.appearanceTimer = 0;
     }
     
-
 		public void update(KListener kListener) {
 			if ( kListener.left ) {
 				move(-1,0);
