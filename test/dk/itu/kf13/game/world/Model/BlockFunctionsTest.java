@@ -49,7 +49,7 @@ public class BlockFunctionsTest {
 		String blockA = "B";
 		String blockB = "U";
 		BlockFunctions instance = new BlockFunctions();
-		instance.specialMovement(blockA, blockB);
+		instance.backwardsMove(blockA, blockB);
 		assertEquals(Player.movementValue, -5);
 	}
 }

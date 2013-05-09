@@ -29,7 +29,8 @@ public class BlockFunctions {
 
 	// Array with the blocks that result in a repawning.
     String[][] spawnMovement = new String[][]{
-        {"B", "P"}
+        {"B", "P"},
+        {"O", "P"}
     };
 
     public boolean isMoveLegal(String blockA, String blockB) {
@@ -46,7 +47,7 @@ public class BlockFunctions {
         return true;
     }
 
-    public void specialMovement(String blockA, String blockB) {
+    public void backwardsMove(String blockA, String blockB) {
 
 			// Checks for BACKWARDS movement
         for (int i = 0; i < backwardsMovement.length; i++) {
@@ -58,6 +59,9 @@ public class BlockFunctions {
                 Player.movementValue = Integer.parseInt(third);
             }
         }
+		}
+
+		public void slowMove(String blockA, String blockB ) {
 
 			// Checks for SLOW movement
         for ( int i = 0; i < slowMovement.length; i++ ) {
@@ -70,6 +74,9 @@ public class BlockFunctions {
             }
         }
 
+		}
+
+		public void spawnMove(String blockA, String blockB) {
 			// Checks for SPAWN movement
         for (int i = 0; i < spawnMovement.length; i++) {
             String first = spawnMovement[i][0];

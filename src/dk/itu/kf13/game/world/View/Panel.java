@@ -81,6 +81,9 @@ public class Panel extends JPanel {
             // checks if there is any special movement going on.
             smallMapWithoutPlayer = smallMap; //array of the mapFunc without player
 
+						// Checks if the player should be respawned somewhere.
+						blockFunc.spawnMove(player.getAppearance(), smallMapWithoutPlayer[player.getX()][player.getY()]);
+            blockFunc.backwardsMove( player.getAppearance(), smallMapWithoutPlayer[player.getX()][player.getY()]);
 
             // Places the PLAYER in mapFunc array.
             smallMap = mapFunc.replaceLetterInMapArray(smallMap, player.getAppearance(), player.getX(), player.getY());
@@ -108,7 +111,7 @@ public class Panel extends JPanel {
 						player.update(kListener);
 
 						// Sets special movement.
-            blockFunc.specialMovement( player.getAppearance(), smallMapWithoutPlayer[player.getX()][player.getY()]);
+						blockFunc.slowMove(player.getAppearance(), smallMapWithoutPlayer[player.getX()][player.getY()]);
 
 						// Resets the Keylistener.
 						kListener.doNotMove();
