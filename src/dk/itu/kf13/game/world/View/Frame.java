@@ -21,7 +21,7 @@ public class Frame {
     JFrame jframe;
     Panel panel;
 
-    public void createFrame() throws IOException, InterruptedException {
+    public void createFrame() {
         // Sets the size and title
         jframe = new JFrame(title);
         jframe.setPreferredSize(new Dimension(width, height));

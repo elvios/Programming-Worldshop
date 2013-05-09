@@ -15,7 +15,7 @@ public class MapConversion {
     
     MapFunctions mapFunc = new MapFunctions();
     
-  public String[][] smallMapToLargeMap(String[][] mapArray) throws IOException {
+  public String[][] smallMapToLargeMap(String[][] mapArray) {
         
         // We find the dimensions of the large mapFunc
         int cols = mapArray.length; // 11

@@ -49,7 +49,7 @@ public class Panel extends JPanel {
     public JTextArea ta = new JTextArea(height, width);
 
     // This is the constructor
-    public Panel() throws IOException {
+    public Panel() {
 
         super(); // calls the parent.
         this.addKeyListener(kListener);
@@ -61,9 +61,14 @@ public class Panel extends JPanel {
         ta.setLineWrap(true); //lines are wrapped - even in mid-word.
         add(ta); // adds the textarea
 
-        // Draws the initial map - once. Then appends it to the textarea
-        smallMap = mapFunc.getOriginalMap(); // just a copy of the mapFunc file
+			try {
+				// Draws the initial map - once. Then appends it to the textarea
+				smallMap = mapFunc.getOriginalMap(); // just a copy of the mapFunc file
         largeMap = mapConv.smallMapToLargeMap(smallMap); // blow it up to large array
+			} catch (IOException ex) {
+				System.out.println(ex.getMessage());
+			}
+
         mapString = mapConv.multiArrayToString(largeMap); // shrink it to one string
         ta.append(mapString); // append it to textarea
     }
@@ -88,7 +93,7 @@ public class Panel extends JPanel {
                     smallMapWithoutPlayer[player.getX()][player.getY()]);
 
             // Places the PLAYER in mapFunc array.
-            smallMap = mapFunc.replaceLetterInMapArray(smallMap, "B", player.getX(), player.getY());
+            smallMap = mapFunc.replaceLetterInMapArray(smallMap, player.getAppearance(), player.getX(), player.getY());
 
             // makes large mapFunc array, and then shrink it to one string.
             String[][] large = mapConv.smallMapToLargeMap(smallMap);
@@ -115,7 +120,7 @@ public class Panel extends JPanel {
 						repaint();
 
         } catch (IOException ex) {
-            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
     }
 }

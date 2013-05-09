@@ -15,12 +15,14 @@ public class BlockFunctions {
         {"B", "U", "-5"},
         {"B", "V", "-5"}
     };
+
     String[][] slowMovement = new String[][]{
-        {"B", "s", "4"}
     };
+
     String[][] legalMovement = new String[][]{
         {"B", "g"}
     };
+
     String[][] spawnMovement = new String[][]{
         {"B", "P"}
     };

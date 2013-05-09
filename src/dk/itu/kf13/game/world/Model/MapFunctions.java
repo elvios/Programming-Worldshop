@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,53 +22,68 @@ public class MapFunctions {
     
 		String mapName = "Map1";
 
-    public String[][] getOriginalMap() throws IOException {
-        String[][] originalMap = mapFileToSmallArray(mapName + ".txt");
+    public String[][] getOriginalMap() {
+        String[][] originalMap = null;
+				originalMap = mapFileToSmallArray(mapName + ".txt");
         return originalMap;
     }
     
-    public String[] fileToArray(String filepath) throws IOException {
-        FileReader fr = new FileReader(filepath);
-        BufferedReader textReader = new BufferedReader(fr);
+    public String[] fileToArray(String filepath) {
+			FileReader fr = null;
+			try {
+				fr = new FileReader(filepath);
+				BufferedReader textReader = new BufferedReader(fr);
+				// We get the numberOfLines from the method numberOfLinesInFile that we wrote
+				// further down in this file.
+				int numberOfLines = numberOfLinesInFile(filepath);
+				String[] textData = new String[numberOfLines];
+				for (int i = 0; i < numberOfLines; i++) {
+						textData[i] = textReader.readLine();
 
-        // We get the numberOfLines from the method numberOfLinesInFile that we wrote 
-        // further down in this file.
-        int numberOfLines = numberOfLinesInFile(filepath);
-
-        String[] textData = new String[numberOfLines];
-
-        for (int i = 0; i < numberOfLines; i++) {
-            textData[i] = textReader.readLine();
-
-        }
-        textReader.close();
-        return textData;
+				}
+				textReader.close();
+				return textData;
+			} catch (FileNotFoundException ex) {
+				Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+			} catch (IOException ex) {
+				Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+			} finally {
+				try {
+					fr.close();
+				} catch (IOException ex) {
+					Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+				}
+			}
+			return null;
     }
 
-    /**
-     * This function returns the number of lines in a file.
-     * @param filepath
-     * @return number of lines in the file
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public int numberOfLinesInFile(String filepath) throws FileNotFoundException, IOException {
-
-        FileReader fr = new FileReader(filepath);
-        BufferedReader textReader = new BufferedReader(fr);
-
-        String line;
-        int counter = 0;
-
-        while ((line = textReader.readLine()) != null) {
-            counter++;
-        }
-        textReader.close();
-
-        return counter;
+    public int numberOfLinesInFile(String filepath) {
+			FileReader fr = null;
+			try {
+				fr = new FileReader(filepath);
+				BufferedReader textReader = new BufferedReader(fr);
+				String line;
+				int counter = 0;
+				while ((line = textReader.readLine()) != null) {
+						counter++;
+				}
+				textReader.close();
+				return counter;
+			} catch (FileNotFoundException ex) {
+				Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+			} catch (IOException ex) {
+				Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+			} finally {
+				try {
+					fr.close();
+				} catch (IOException ex) {
+					Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+				}
+			}
+			return 0;
     }
     
-    public String[][] mapFileToSmallArray(String mapName) throws IOException {
+    public String[][] mapFileToSmallArray(String mapName) {
         // We load the map file into an array.
         //String[] mapArray = fileToArray("src\\dk\\itu\\kf13\\game\\world\\View\\Maps\\" + mapName);
         String[] mapArray = fileToArray("src/dk/itu/kf13/game/world/View/Maps/" + mapName);

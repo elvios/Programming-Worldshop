@@ -7,6 +7,8 @@ package dk.itu.kf13.game.world.Model;
 import dk.itu.kf13.game.world.Controller.KListener;
 import dk.itu.kf13.game.world.View.Panel;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,6 +23,7 @@ public class Player {
     public static int movementValue;
     private String appearance;
     private boolean legalMove;
+		private int appearanceTimer;
 
 		String[][] originalMap;
 		String[][] smallMap;
@@ -34,10 +37,11 @@ public class Player {
         this.y = startY;
         this.appearance = startAppearance;
         this.movementValue = startMovementValue;
+				this.appearanceTimer = 0;
     }
     
 
-		public void update(KListener kListener) throws IOException {
+		public void update(KListener kListener) {
 			if ( kListener.left ) {
 				move(-1,0);
 			}
@@ -52,6 +56,11 @@ public class Player {
 
 			if ( kListener.down ) {
 				move(0,1);
+			}
+
+			if ( kListener.changeAppearance ) {
+				appearance = "O";
+				appearanceTimer = 20;
 			}
 
 		}
@@ -69,9 +78,7 @@ public class Player {
         return appearance;
     } 
 
-    public void move(int moveX, int moveY) throws IOException {
-
-			System.out.println(movementValue);
+    public void move(int moveX, int moveY) {
 
         // If the movementValue is below 1, one moves backwards.
         if ( movementValue < 1 ) {
@@ -109,9 +116,9 @@ public class Player {
             if(newY > MapFunctions.MAP_HEIGHT -1){
                 newY = MapFunctions.MAP_HEIGHT -1;
             }
-             
-            // Loads the original mapFunc
-            originalMap = mapFunc.getOriginalMap();
+
+						// Loads the original mapFunc
+						originalMap = mapFunc.getOriginalMap();
 
             smallMap = Panel.smallMap;
             

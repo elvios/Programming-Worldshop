@@ -21,6 +21,7 @@ public class KListener implements KeyListener {
 	public boolean right = false;
 	public boolean up = false;
 	public boolean down = false;
+	public boolean changeAppearance = false;
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -42,6 +43,9 @@ public class KListener implements KeyListener {
 				break;
 			case KeyEvent.VK_DOWN:
 				down = true;
+				break;
+			case KeyEvent.VK_A:
+				changeAppearance = true;
 				break;
 		}
 	}
