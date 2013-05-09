@@ -11,9 +11,6 @@ import dk.itu.kf13.game.world.Model.MapFunctions;
 import dk.itu.kf13.game.world.Model.Player;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -61,13 +58,9 @@ public class Panel extends JPanel {
         ta.setLineWrap(true); //lines are wrapped - even in mid-word.
         add(ta); // adds the textarea
 
-			try {
 				// Draws the initial map - once. Then appends it to the textarea
 				smallMap = mapFunc.getOriginalMap(); // just a copy of the mapFunc file
         largeMap = mapConv.smallMapToLargeMap(smallMap); // blow it up to large array
-			} catch (IOException ex) {
-				System.out.println(ex.getMessage());
-			}
 
         mapString = mapConv.multiArrayToString(largeMap); // shrink it to one string
         ta.append(mapString); // append it to textarea
@@ -76,7 +69,6 @@ public class Panel extends JPanel {
     @Override
     public void paint(Graphics g) {
 
-        try {
             super.paint(g); // Call its parent for proper rendering.
 
             smallMap = mapFunc.getOriginalMap();
@@ -119,8 +111,5 @@ public class Panel extends JPanel {
 						kListener.doNotMove();
 						repaint();
 
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 }

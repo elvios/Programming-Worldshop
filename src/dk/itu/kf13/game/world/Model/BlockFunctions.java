@@ -10,19 +10,23 @@ package dk.itu.kf13.game.world.Model;
  */
 public class BlockFunctions {
 
+	// Array with the blocks that result in backwards movement.
     String[][] backwardsMovement = new String[][]{
         {"B", "T", "-5"},
         {"B", "U", "-5"},
         {"B", "V", "-5"}
     };
 
+	// Array with the blocks that result in slow movement.
     String[][] slowMovement = new String[][]{
     };
 
+	// Array with legal movements.
     String[][] legalMovement = new String[][]{
         {"B", "g"}
     };
 
+	// Array with the blocks that result in a repawning.
     String[][] spawnMovement = new String[][]{
         {"B", "P"}
     };
