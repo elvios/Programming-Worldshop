@@ -18,8 +18,10 @@ public class MapFunctions {
     public static final int MAP_WIDTH = 20;
     public static final int MAP_HEIGHT = 10;
     
+		String mapName = "Map1";
+
     public String[][] getOriginalMap() throws IOException {
-        String[][] originalMap = mapFileToSmallArray("Map1.txt");
+        String[][] originalMap = mapFileToSmallArray(mapName + ".txt");
         return originalMap;
     }
     

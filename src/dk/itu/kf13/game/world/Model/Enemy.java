@@ -39,7 +39,26 @@ public class Enemy {
         }
     }
 
-    public void move() {
+    public void moveInCircle() {
+
+			int moveX = 0;
+			int moveY = 0;
+
+			if ( x < areaBX && y == areaAY) {
+				moveX = 1;
+			} else if ( x == areaBX && y < areaBY ) {
+				moveY = 1;
+			} else if ( x > areaAX && y == areaBY ) {
+				moveX = -1;
+			} else if ( x == areaAX && y > areaAY ) {
+				moveY = -1;
+			}
+
+        x = x + moveX;
+        y = y + moveY;
+    }
+
+    public void moveRandomly() {
         Random rnd = new Random();
         int moveX = rnd.nextInt(3) - 1;
         int moveY = rnd.nextInt(3) - 1;

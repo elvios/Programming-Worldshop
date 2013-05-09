@@ -23,8 +23,9 @@ public class Player {
     private boolean legalMove;
 
     BlockFunctions block = new BlockFunctions();
-    MapFunctions map = new MapFunctions();
+    MapFunctions mapFunc = new MapFunctions();
     
+		// Constructor
     public Player(int startX, int startY, String startAppearance, int startMovementValue) {
         this.x = startX;
         this.y = startY;
@@ -108,7 +109,7 @@ public class Player {
             // TODO: this should be changed to what the mapFunc looks like
             // right now. Because if the tornado moves around, the new
             // location of the tornado will not be a part of _the_original_map_
-            String[][] originalMap = map.getOriginalMap();
+            String[][] originalMap = mapFunc.getOriginalMap();
 
             String[][] smallMap = Panel.smallMap;
             

@@ -30,7 +30,7 @@ public class Panel extends JPanel {
     Enemy tornado = new Enemy(2, 2, "TUV ", 5, 5, 0, 0, 9, 9);
     Enemy tornado2 = new Enemy(2, 2, "TUV ", 11, 5, 10, 0, 19, 9);
     Enemy pig = new Enemy(1, 1, "P", 17, 4, 17, 4, 19, 6);
-    
+
     BlockFunctions blockFunc = new BlockFunctions();
     MapFunctions mapFunc = new MapFunctions();
     MapConversion mapConv = new MapConversion();
@@ -102,9 +102,9 @@ public class Panel extends JPanel {
             // Thread.sleep.
             counter++;
             if (counter == 10) {
-                tornado.move();
-                tornado2.move();
-                pig.move();
+                tornado.moveRandomly();
+                tornado2.moveRandomly();
+                pig.moveInCircle();
 
                 counter = 0;
             }
