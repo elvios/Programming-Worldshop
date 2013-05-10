@@ -5,7 +5,6 @@
 package dk.itu.kf13.game.world.View;
 
 import java.awt.Dimension;
-import java.io.IOException;
 import javax.swing.JFrame;
 
 /**

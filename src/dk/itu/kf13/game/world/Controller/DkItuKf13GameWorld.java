@@ -2,11 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.itu.kf13.game.world;
+package dk.itu.kf13.game.world.Controller;
 
 import dk.itu.kf13.game.world.View.Frame;
 import dk.itu.kf13.game.world.View.Panel;
-import java.io.IOException;
 
 /**
  * @author Elvis Flesborg

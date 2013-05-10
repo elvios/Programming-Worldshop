@@ -6,9 +6,9 @@ package dk.itu.kf13.game.world.Controller;
 
 import java.awt.event.KeyEvent;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *

@@ -114,6 +114,5 @@ public class Panel extends JPanel {
 
         // repainting
         repaint();
-
     }
 }

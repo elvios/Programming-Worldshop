@@ -20,7 +20,6 @@ public class Player {
     public static int movementValue;
     private String appearance;
     private boolean legalMove;
-    private int appearanceTimer;
     String[][] originalMap;
     String[][] smallMap;
     BlockFunctions block = new BlockFunctions();
@@ -35,7 +34,7 @@ public class Player {
     }
 
     /**
-     * Checks if the keylistener gets any input.
+     * Checks if the keyListener gets any input.
      * @param kListener
      */
     public void update(KListener kListener) {
