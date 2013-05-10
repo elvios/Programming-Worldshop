@@ -12,96 +12,118 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * @author Elvis Flesborg
  * @author Sarah de Voss
  */
 public class MapFunctions {
-    
+
     public static final int MAP_WIDTH = 20;
     public static final int MAP_HEIGHT = 10;
-    
-		String mapName = "Map1";
+    String mapName = "Map1";
 
     public String[][] getOriginalMap() {
         String[][] originalMap = null;
-				originalMap = mapFileToSmallArray(mapName + ".txt");
+        originalMap = mapFileToSmallArray(mapName + ".txt");
         return originalMap;
     }
-    
+
+    /**
+     *
+     * @param filepath
+     * @return array with one line of the file in each element of the array.
+     */
     public String[] fileToArray(String filepath) {
-			FileReader fr = null;
-			try {
-				fr = new FileReader(filepath);
-				BufferedReader textReader = new BufferedReader(fr);
-				// We get the numberOfLines from the method numberOfLinesInFile that we wrote
-				// further down in this file.
-				int numberOfLines = numberOfLinesInFile(filepath);
-				String[] textData = new String[numberOfLines];
-				for (int i = 0; i < numberOfLines; i++) {
-						textData[i] = textReader.readLine();
+        FileReader fr = null;
+        try {
+            fr = new FileReader(filepath);
+            BufferedReader textReader = new BufferedReader(fr);
+            // We get the numberOfLines from the method numberOfLinesInFile that we wrote
+            // further down in this file.
+            int numberOfLines = numberOfLinesInFile(filepath);
+            String[] textData = new String[numberOfLines];
+            for (int i = 0; i < numberOfLines; i++) {
+                textData[i] = textReader.readLine();
 
-				}
-				textReader.close();
-				return textData;
-			} catch (FileNotFoundException ex) {
-				Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
-			} catch (IOException ex) {
-				Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
-			} finally {
-				try {
-					fr.close();
-				} catch (IOException ex) {
-					Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
-				}
-			}
-			return null;
+            }
+            textReader.close();
+            return textData;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
     }
 
+    /**
+     *
+     * @param filepath
+     * @return The number of lines in a file.
+     */
     public int numberOfLinesInFile(String filepath) {
-			FileReader fr = null;
-			try {
-				fr = new FileReader(filepath);
-				BufferedReader textReader = new BufferedReader(fr);
-				String line;
-				int counter = 0;
-				while ((line = textReader.readLine()) != null) {
-						counter++;
-				}
-				textReader.close();
-				return counter;
-			} catch (FileNotFoundException ex) {
-				Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
-			} catch (IOException ex) {
-				Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
-			} finally {
-				try {
-					fr.close();
-				} catch (IOException ex) {
-					Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
-				}
-			}
-			return 0;
+        FileReader fr = null;
+        try {
+            fr = new FileReader(filepath);
+            BufferedReader textReader = new BufferedReader(fr);
+            String line;
+            int counter = 0;
+            while ((line = textReader.readLine()) != null) {
+                counter++;
+            }
+            textReader.close();
+            return counter;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(MapFunctions.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return 0;
     }
-    
+
+    /**
+     *
+     * @param mapName
+     * @return 2D array with one letter in each element.
+     */
     public String[][] mapFileToSmallArray(String mapName) {
         // We load the map file into an array.
         //String[] mapArray = fileToArray("src\\dk\\itu\\kf13\\game\\world\\View\\Maps\\" + mapName);
         String[] mapArray = fileToArray("src/dk/itu/kf13/game/world/View/Maps/" + mapName);
-        
+
         int rows = mapArray.length;
         int cols = mapArray[0].length();
-        
+
         String[][] smallMapArray = new String[cols][rows];
-        
-        for ( int i = 0 ; i < rows ; i++ ) {
-            for ( int j = 0 ; j < cols ; j++ ) {
-                smallMapArray[j][i] = mapArray[i].substring(j, j+1);
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                smallMapArray[j][i] = mapArray[i].substring(j, j + 1);
             }
         }
-        
+
         return smallMapArray;
     }
-    
+
+    /**
+     * Replaces a letter in the map with another.
+     * @param mapArray
+     * @param replacement
+     * @param x
+     * @param y
+     * @return the new map
+     */
     public String[][] replaceLetterInMapArray(String[][] mapArray, String replacement, int x, int y) {
         // We replace the letter in coordinates x,y and return it.
         mapArray[x][y] = replacement;

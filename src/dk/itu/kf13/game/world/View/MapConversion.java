@@ -5,25 +5,30 @@
 package dk.itu.kf13.game.world.View;
 
 import dk.itu.kf13.game.world.Model.MapFunctions;
-import java.io.IOException;
 
 /**
- *
+ * @author Elvis Flesborg
  * @author Sarah de Voss
  */
 public class MapConversion {
-    
+
     MapFunctions mapFunc = new MapFunctions();
-    
-  public String[][] smallMapToLargeMap(String[][] mapArray) {
-        
+
+    /**
+     * Takes an array with the small map, and creates a larger array with
+     * the blocks in stead of just letters.
+     * @param mapArray
+     * @return 2D array with the map, as it should be printed.
+     */
+    public String[][] smallMapToLargeMap(String[][] mapArray) {
+
         // We find the dimensions of the large mapFunc
         int cols = mapArray.length; // 11
         int rows = mapArray[0].length * 3; // we need 3 times as many rows.
 
         // Begins to create the larger mapFunc array with the new dimension.
         String[][] LargeMapArray = new String[cols][rows];
-        
+
         for (int i = 0; i < mapArray[0].length; i++) {
             for (int j = 0; j < cols; j++) {
 
@@ -41,13 +46,17 @@ public class MapConversion {
         }
 
         return LargeMapArray;
-    }  
-  
-  
+    }
+
+    /**
+     * Takes the large map array, and returns it as one string
+     * @param inputArray
+     * @return String with the whole map.
+     */
     public String multiArrayToString(String[][] inputArray) {
         String output = "";
         for (int i = 0; i < inputArray[0].length; i++) {
-            for (int j = 0; j < inputArray.length; j++){
+            for (int j = 0; j < inputArray.length; j++) {
                 output = output + inputArray[j][i];
             }
         }

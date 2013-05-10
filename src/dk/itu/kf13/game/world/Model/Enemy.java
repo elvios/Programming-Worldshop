@@ -7,7 +7,7 @@ package dk.itu.kf13.game.world.Model;
 import java.util.Random;
 
 /**
- *
+ * @author Elvis Flesborg
  * @author Sarah de Voss
  */
 public class Enemy {
@@ -20,6 +20,18 @@ public class Enemy {
     private int areaBX;
     private int areaBY;
 
+    /**
+     * Creates an enemy
+     * @param sizeX
+     * @param sizeY
+     * @param letters
+     * @param startX
+     * @param startY
+     * @param AX
+     * @param AY
+     * @param BX
+     * @param BY
+     */
     public Enemy(int sizeX, int sizeY, String letters, int startX, int startY,
             int AX, int AY, int BX, int BY) {
 
@@ -39,25 +51,32 @@ public class Enemy {
         }
     }
 
+    /**
+     * Moves the enemy around the edge of its walking area.
+     */
     public void moveInCircle() {
 
-			int moveX = 0;
-			int moveY = 0;
+        int moveX = 0;
+        int moveY = 0;
 
-			if ( x < areaBX && y == areaAY) {
-				moveX = 1;
-			} else if ( x == areaBX && y < areaBY ) {
-				moveY = 1;
-			} else if ( x > areaAX && y == areaBY ) {
-				moveX = -1;
-			} else if ( x == areaAX && y > areaAY ) {
-				moveY = -1;
-			}
+        if (x < areaBX && y == areaAY) {
+            moveX = 1;
+        } else if (x == areaBX && y < areaBY) {
+            moveY = 1;
+        } else if (x > areaAX && y == areaBY) {
+            moveX = -1;
+        } else if (x == areaAX && y > areaAY) {
+            moveY = -1;
+        }
 
         x = x + moveX;
         y = y + moveY;
     }
 
+    /**
+     * Moves the enemy maximum one block away from its current position. 
+     * But in a random direction.
+     */
     public void moveRandomly() {
         Random rnd = new Random();
         int moveX = rnd.nextInt(3) - 1;
@@ -89,6 +108,11 @@ public class Enemy {
 
     }
 
+    /**
+     * Sets the enemy into the map.
+     * @param smallMap
+     * @param map
+     */
     public void placeInMapArray(String[][] smallMap, MapFunctions map) {
         // places the tornado
         for (int i = 0; i < appearance.length; i++) {

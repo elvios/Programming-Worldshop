@@ -10,8 +10,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author elvis
+ * @author Elvis Flesborg
+ * @author Sarah
  */
 public class MapFunctionsTest {
 	

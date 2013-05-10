@@ -9,7 +9,7 @@ import dk.itu.kf13.game.world.View.Panel;
 import java.io.IOException;
 
 /**
- *
+ * @author Elvis Flesborg
  * @author Sarah de Voss
  */
 public class DkItuKf13GameWorld {
@@ -23,17 +23,17 @@ public class DkItuKf13GameWorld {
         Frame frame = new Frame();
         Panel panel = new Panel();
 
-				frame.createFrame();
+        frame.createFrame();
 
 
         // Main loop.
         while (true) {
             panel.repaint();
-					try {
-						Thread.sleep(20);
-					} catch (InterruptedException ex) {
-						System.out.println(ex.getMessage());
-					}
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
     }
 }

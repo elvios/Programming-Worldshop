@@ -9,7 +9,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 /**
- *
+ * @author Elvis Flesborg
  * @author Sarah de Voss
  */
 public class Frame {
@@ -21,6 +21,9 @@ public class Frame {
     JFrame jframe;
     Panel panel;
 
+    /**
+     * Creates the window frame.
+     */
     public void createFrame() {
         // Sets the size and title
         jframe = new JFrame(title);

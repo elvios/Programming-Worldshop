@@ -11,52 +11,52 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author elvis
+ * @author Elvis Flesborg
+ * @author Sarah de Voss
  */
 public class MapConversionTest {
-	
-	public MapConversionTest() {
-	}
-	
-	@BeforeClass
-	public static void setUpClass() {
-	}
-	
-	@AfterClass
-	public static void tearDownClass() {
-	}
 
-	/**
-	 * Test of smallMapToLargeMap method, of class MapConversion.
-	 */
-	@Test
-	public void testSmallMapToLargeMap() {
-		System.out.println("smallMapToLargeMap");
-		MapConversion instance = new MapConversion();
-		MapFunctions mapFunc = new MapFunctions();
+    public MapConversionTest() {
+    }
 
-		String[][] smallMap  = mapFunc.getOriginalMap();
-		String expResult = "  ~  ";
-		String[][] resultArray = instance.smallMapToLargeMap(smallMap);
-		String result = resultArray[0][1];
-		assertEquals(expResult, result);
-	}
+    @BeforeClass
+    public static void setUpClass() {
+    }
 
-	/**
-	 * Test of multiArrayToString method, of class MapConversion.
-	 */
-	@Test
-	public void testMultiArrayToString() {
-		System.out.println("multiArrayToString");
-		MapConversion instance = new MapConversion();
-		MapFunctions mapFunc = new MapFunctions();
+    @AfterClass
+    public static void tearDownClass() {
+    }
 
-		String[][] inputArray = mapFunc.getOriginalMap();
-		inputArray = instance.smallMapToLargeMap(inputArray);
+    /**
+     * Test of smallMapToLargeMap method, of class MapConversion.
+     */
+    @Test
+    public void testSmallMapToLargeMap() {
+        System.out.println("smallMapToLargeMap");
+        MapConversion instance = new MapConversion();
+        MapFunctions mapFunc = new MapFunctions();
 
-		String expResult = "  ~  ";
-		String result = instance.multiArrayToString(inputArray).substring(100, 105);
-		assertEquals(expResult, result);
-	}
+        String[][] smallMap = mapFunc.getOriginalMap();
+        String expResult = "  ~  ";
+        String[][] resultArray = instance.smallMapToLargeMap(smallMap);
+        String result = resultArray[0][1];
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of multiArrayToString method, of class MapConversion.
+     */
+    @Test
+    public void testMultiArrayToString() {
+        System.out.println("multiArrayToString");
+        MapConversion instance = new MapConversion();
+        MapFunctions mapFunc = new MapFunctions();
+
+        String[][] inputArray = mapFunc.getOriginalMap();
+        inputArray = instance.smallMapToLargeMap(inputArray);
+
+        String expResult = "  ~  ";
+        String result = instance.multiArrayToString(inputArray).substring(100, 105);
+        assertEquals(expResult, result);
+    }
 }
